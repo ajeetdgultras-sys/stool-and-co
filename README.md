@@ -18,6 +18,6 @@ The first uploads with GIF names were received as single-frame PNGs. The later A
 Phone hero displays the complete product image with its call to action beneath it. Narrow tablets use a readable single column. Mobile navigation has full-width touch targets, and media viewers fit within the viewport.
 
 ## Kickstarter campaign prompts
-Four prominent campaign placements open one shared popup. An automatic popup appears after eight seconds, once per browser session. Set the official campaign URL in `dist/campaign-config.js`; until then the popup shows a disabled coming-soon action and sends visitors nowhere.
+Four prominent campaign placements open one shared popup. An automatic popup appears after eight seconds, once per browser session. Set the official campaign URL in `dist/campaign-config.js`; until then the popup shows a standard Kickstarter button without a redirect destination.
 
 The circled posture graphic (`original-angle.webp`) is static because its animated original was absent from Archive.zip. The seven supplied animations continue to use their working MP4 loops.
