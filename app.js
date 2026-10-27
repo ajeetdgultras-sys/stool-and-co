@@ -8,3 +8,20 @@ for(const figure of motionItems){const video=figure.querySelector('video');video
 viewer.addEventListener('close',()=>{const player=viewer.querySelector('.viewer-video');player.pause();player.removeAttribute('src');player.load();player.hidden=true;viewer.querySelector('.viewer-image').hidden=false;viewer.querySelector('.image-original').textContent='Open full-resolution image ↗';for(const figure of motionItems){const video=figure.querySelector('video');if(video.dataset.visible==='true'&&video.dataset.userPaused!=='true'&&!reduceMotion.matches){playMotion(video)}}});
 document.addEventListener('visibilitychange',()=>{for(const figure of motionItems){const video=figure.querySelector('video');if(document.hidden){video.pause()}else if(video.dataset.visible==='true'&&video.dataset.userPaused!=='true'&&!reduceMotion.matches){playMotion(video)}}});
 reduceMotion.addEventListener('change',()=>{for(const figure of motionItems){const video=figure.querySelector('video');if(reduceMotion.matches){video.pause()}else if(video.dataset.visible==='true'&&video.dataset.userPaused!=='true'){playMotion(video)}}});
+// A single, dismissible Kickstarter prompt per browser session.
+const campaignDialog=document.getElementById('campaign-dialog');
+const campaignConfig=window.STOOL_CAMPAIGN||{};
+const campaignSessionKey='stool-kickstarter-prompt-v1';
+let campaignSeen=false;
+try{campaignSeen=sessionStorage.getItem(campaignSessionKey)==='seen'}catch{}
+let campaignUrl=null;
+try{const u=new URL(campaignConfig.url);if(u.protocol==='https:'&&(u.hostname==='kickstarter.com'||u.hostname.endsWith('.kickstarter.com'))){campaignUrl=u.href}}catch{}
+if(campaignUrl){const destination=campaignDialog.querySelector('.campaign-destination');destination.href=campaignUrl;destination.hidden=false;campaignDialog.querySelector('.campaign-pending').hidden=true}
+function showCampaign(){if(campaignDialog.open)return;campaignSeen=true;document.querySelectorAll('dialog[open]').forEach(dialog=>dialog.close());try{sessionStorage.setItem(campaignSessionKey,'seen')}catch{}campaignDialog.showModal()}
+document.querySelectorAll('[data-campaign]').forEach(button=>button.addEventListener('click',showCampaign));
+campaignDialog.querySelector('.campaign-dismiss').addEventListener('click',()=>campaignDialog.close());
+let campaignTimerReady=false;
+function maybeShowCampaign(){if(campaignTimerReady&&!campaignSeen&&!document.hidden&&!document.querySelector('dialog[open]'))showCampaign()}
+window.setTimeout(()=>{campaignTimerReady=true;maybeShowCampaign()},Number(campaignConfig.popupDelayMs)||8000);
+document.addEventListener('visibilitychange',maybeShowCampaign);
+document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('close',maybeShowCampaign));
