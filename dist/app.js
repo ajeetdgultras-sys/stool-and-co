@@ -18,7 +18,7 @@ let campaignUrl=null;
 try{const u=new URL(campaignConfig.url);if(u.protocol==='https:'&&(u.hostname==='kickstarter.com'||u.hostname.endsWith('.kickstarter.com'))){campaignUrl=u.href}}catch{}
 if(campaignUrl){const destination=campaignDialog.querySelector('.campaign-destination');destination.href=campaignUrl;destination.hidden=false;campaignDialog.querySelector('.campaign-pending').hidden=true}
 function showCampaign(){if(campaignDialog.open)return;campaignSeen=true;document.querySelectorAll('dialog[open]').forEach(dialog=>dialog.close());try{sessionStorage.setItem(campaignSessionKey,'seen')}catch{}campaignDialog.showModal()}
-document.querySelectorAll('[data-campaign]').forEach(button=>button.addEventListener('click',showCampaign));
+document.querySelectorAll('[data-campaign]').forEach(link=>{if(campaignUrl){link.href=campaignUrl}else{link.addEventListener('click',event=>{event.preventDefault();showCampaign()})}});
 campaignDialog.querySelector('.campaign-dismiss').addEventListener('click',()=>campaignDialog.close());
 let campaignTimerReady=false;
 function maybeShowCampaign(){if(campaignTimerReady&&!campaignSeen&&!document.hidden&&!document.querySelector('dialog[open]'))showCampaign()}
