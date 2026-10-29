@@ -182,5 +182,23 @@
     "height": 905,
     "frames": 1,
     "source_format": "PNG"
+  },
+  {
+    "asset": "assets/lid-detail-20261029.webp",
+    "source": "stool & co Web2323.gif",
+    "width": 614,
+    "height": 409,
+    "frames": 1,
+    "source_format": "PNG",
+    "replaces": "assets/overlap.png"
+  },
+  {
+    "asset": "assets/posture-angle-20261029.webp",
+    "source": "stool & co Web (4) (1).gif",
+    "width": 614,
+    "height": 409,
+    "frames": 1,
+    "source_format": "PNG",
+    "replaces": "assets/original-angle.webp"
   }
 ]
