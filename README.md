@@ -20,4 +20,6 @@ Phone hero displays the complete product image with its call to action beneath i
 ## Kickstarter campaign prompts
 Four prominent campaign placements link directly to the official Kickstarter campaign. An automatic popup appears after eight seconds, once per browser session. The official campaign URL is configured in `dist/campaign-config.js` and in all static campaign anchors, including the timed popup.
 
-The circled posture graphic (`original-angle.webp`) is static because its animated original was absent from Archive.zip. The seven supplied animations continue to use their working MP4 loops.
+Archive 2.zip supplied the remaining posture and overlapping-lid animations; all nine animations now use MP4 loops with original timing and inline playback controls.
+
+Restored the lid-protection and posture animations from Archive 2.zip on 29 October 2026.
