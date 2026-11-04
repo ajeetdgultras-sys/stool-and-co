@@ -19,7 +19,7 @@ button.button,button.hero-button{border:0;cursor:pointer}button.hero-button{font
 button.hero-button{background:#fff;color:var(--green)}button.hero-button:hover{background:var(--cream)}
 
 /* Homepage health copy and accessible section guide navigation. */
-.intro .intro-health{max-width:790px;margin:18px auto 0;font-size:17px;line-height:1.65;color:var(--ink)}
+.intro > p.intro-health:last-child{text-align:center;max-width:790px;margin:18px auto 0;font-size:17px;line-height:1.65;color:var(--ink)}
 #backing-guide,#design-process{scroll-margin-top:100px}
 .header nav a:focus-visible,.header nav button:focus-visible{outline-offset:4px}
-@media(max-width:900px){.intro .intro-health{max-width:550px;font-size:14px;line-height:1.65;margin:15px auto 0}.header nav.open{max-height:calc(100dvh - 70px);overflow-y:auto;overscroll-behavior:contain;z-index:20}.header nav a,.header nav button{width:100%;display:block}.header nav a:hover,.header nav button:hover{color:var(--green)}}
+@media(max-width:900px){.intro > p.intro-health:last-child{text-align:center;max-width:550px;font-size:14px;line-height:1.65;margin:15px auto 0}.header nav.open{max-height:calc(100dvh - 70px);overflow-y:auto;overscroll-behavior:contain;z-index:20}.header nav a,.header nav button{width:100%;display:block}.header nav a:hover,.header nav button:hover{color:var(--green)}}
